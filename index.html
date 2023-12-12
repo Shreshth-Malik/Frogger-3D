@@ -1,0 +1,134 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prog 5: Frogger</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: url('background.jpg') center/cover no-repeat;
+    }
+
+    canvas {
+      border: 5px solid black;
+    }
+  </style>
+
+  <script type="text/javascript" src="gl-matrix.js"></script>
+  <script type="text/javascript" src="rasterize2.js"></script>
+</head>
+
+<body onload="main();">
+  <canvas id="myWebGLCanvas" width="512" height="512"></canvas>
+  <canvas id="myImageCanvas" width="512" height="512"></canvas>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Prog 3: Rasterization Solution</title>
+    <style>
+      @font-face {
+        font-family: 'font';
+        src: url('font.ttf') format('truetype');
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: url('background.jpg') center/cover no-repeat;
+      }
+
+      #canvas-container {
+        position: relative;
+        width: 512px; /* Width of the canvas */
+        height: 512px; /* Height of the canvas */
+      }
+  
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 5px solid black;
+      }
+      .modal {
+        /* display: none; Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 100; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto; /* 15% from the top and centered */
+          padding: 20px;
+          border: 1px solid #888;
+          width: 30%; /* Could be more or less, depending on screen size */
+          font-family: 'font', sans-serif;
+          font-size: larger;
+      }
+      .hidden {
+          display: none;
+      }
+      #speedInputDiv {
+        font-family: 'font', sans-serif;
+        font-size: larger;
+        position: fixed;
+        top: 10px;
+        left: 35%;
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+  </style>
+    </style>
+    <script type="text/javascript" src="gl-matrix.js"></script>
+    <script type="text/javascript" src="rasterize2.js"></script>
+  </head>
+
+  <body onload="main();">
+    <div id="speedInputDiv" class="hidden">
+      <label for="speedMultiplier">Speed Multiplier:</label>
+      <input type="number" id="speedMultiplier" min="1" value="1">
+      <button onclick="setSpeedMultiplier()">Set</button>
+    </div>
+    <div id="scoreDiv" style="font-family: 'font', sans-serif; position: fixed; top: 115px; margin-left: 1030px; font-size: larger;">
+      <h3>Score: 0</h3>
+    </div>  
+    <div id="livesDiv" style="font-family: 'font', sans-serif; position: fixed; top: 145px; margin-left: 1030px; font-size: larger;">
+      <h3>Lives: 3</h3>
+    </div>
+    <div style="font-family: 'font', sans-serif; position: fixed; bottom: 15px; left: 11%; font-size: large;">
+      <p>• Use arrow keys to move.</p>
+      <p>• Jump the frogs directly into their houses on top to win!</p>
+      <p>• You only get three lives to get the game through.</p>
+      <p>• Press "!" to change the difficulty and test your skills!</p>
+    </div>
+    <div id="gameModal" class="modal hidden">
+      <div class="modal-content">
+          <p id="gameMessage"></p>
+          <button onclick="closeModal()">OK</button>
+      </div>
+    </div>
+    <div id="canvas-container">
+      <canvas id="myWebGLCanvas" width="512" height="512"></canvas>
+    </div>  
+  </body>
+</html>
