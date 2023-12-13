@@ -173,7 +173,7 @@ function moveObjects() {
         { model: 6, speed: 0.02, bounds: 2.3, startPosition: startPosition.forward },
         { model: 7, speed: -0.01, bounds: -1.3, startPosition: startPosition.reverse },
         { model: 8, speed: 0.015, bounds: 2.3, startPosition: startPosition.forward },
-        { model: 9, speed: 0.02, bounds: 2.3, startPosition: startPosition.forward },
+        { model: 9, speed: 0.01, bounds: 2.3, startPosition: startPosition.forward },
         { model: 10, speed: -0.03, bounds: -1.5, startPosition: startPosition.reverse },
     ];
 
@@ -211,7 +211,7 @@ function logMovement_waterCollision() {
         if (CheckCollision(currFrog, log, 0.2, 0.5)) {
             // Assuming logs move only in the x-direction
             onLog = true;
-            currFrog.translation[0] += (log === inputTriangles[9]) ? 0.02*speedMultiplier : -0.03*speedMultiplier;
+            currFrog.translation[0] += (log === inputTriangles[9]) ? 0.01*speedMultiplier : -0.03*speedMultiplier;
         }
     }
     if(CheckCollision(currFrog, inputTriangles[4], 1.1, 5))
